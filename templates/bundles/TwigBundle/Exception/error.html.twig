@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Something went wrong{% endblock %}
+
+{% block body %}
+<div class="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 px-6 py-12">
+
+    <div class="w-full max-w-2xl rounded-3xl border border-white/10 bg-white/10 p-10 text-center shadow-2xl backdrop-blur-xl">
+
+        <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
+            </svg>
+        </div>
+
+        <h1 class="mt-8 text-5xl font-bold tracking-tight text-white">
+            Oops!
+        </h1>
+
+        <p class="mt-4 text-lg leading-relaxed text-slate-300">
+            Something unexpected happened while processing your request.
+        </p>
+
+        <p class="mt-2 text-sm text-slate-400">
+            Please try again later or return to the homepage.
+        </p>
+
+        <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+                href="{{ path('homepage') }}"
+                class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-indigo-700"
+            >
+                Back to Home
+            </a>
+
+            <a
+                href="{{ path('contact') }}"
+                class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+            >
+                Contact Support
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

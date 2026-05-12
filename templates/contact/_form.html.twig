@@ -1,0 +1,150 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 py-16 px-6">
+    <div class="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-white shadow-2xl lg:grid lg:grid-cols-2">
+
+        <div class="relative hidden lg:flex flex-col justify-between bg-gradient-to-br from-indigo-600 to-slate-900 p-12 text-white">
+            <div>
+                <span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm font-medium backdrop-blur">
+                    Contact Us
+                </span>
+
+                <h1 class="mt-6 text-5xl font-bold leading-tight">
+                    Let’s build something great together.
+                </h1>
+
+                <p class="mt-6 text-lg text-slate-200 leading-relaxed">
+                    Have a project, question, or partnership opportunity? Send us a message and our team will get back to you shortly.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="rounded-xl bg-white/10 p-3 backdrop-blur">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a2 2 0 011.948 1.553l.577 2.31a2 2 0 01-.502 1.86l-1.27 1.27a16.001 16.001 0 006.364 6.364l1.27-1.27a2 2 0 011.86-.502l2.31.577A2 2 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Fast Response</h3>
+                        <p class="text-slate-300">We usually reply within 24 hours.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="rounded-xl bg-white/10 p-3 backdrop-blur">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 12.414a8 8 0 111.414-1.414l4.243 4.243a1 1 0 01-1.414 1.414z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Professional Support</h3>
+                        <p class="text-slate-300">Get help from experienced professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-8 sm:p-12">
+            <div class="mb-10">
+                <h2 class="text-4xl font-bold text-slate-900">
+                    Send a Message
+                </h2>
+                <p class="mt-3 text-slate-600">
+                    Fill out the form below and we’ll get back to you soon.
+                </p>
+            </div>
+
+            {{ form_start(form, {
+                attr: {
+                    class: 'space-y-6'
+                }
+            }) }}
+
+                {% for flash_error in app.flashes('error') %}
+                    <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                        {{ flash_error }}
+                    </div>
+                {% endfor %}
+
+                {% for flash_success in app.flashes('success') %}
+                    <div class="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                        {{ flash_success }}
+                    </div>
+                {% endfor %}
+
+                <div>
+                    {{ form_label(form.name, null, {
+                        label_attr: {
+                            class: 'mb-2 block text-sm font-semibold text-slate-700'
+                        }
+                    }) }}
+
+                    {{ form_widget(form.name) }}
+
+                    <div class="mt-2 text-sm text-red-500">
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div>
+                        {{ form_label(form.email, null, {
+                            label_attr: {
+                                class: 'mb-2 block text-sm font-semibold text-slate-700'
+                            }
+                        }) }}
+
+                        {{ form_widget(form.email) }}
+
+                        <div class="mt-2 text-sm text-red-500">
+                            {{ form_errors(form.email) }}
+                        </div>
+                    </div>
+
+                    <div>
+                        {{ form_label(form.subject, null, {
+                            label_attr: {
+                                class: 'mb-2 block text-sm font-semibold text-slate-700'
+                            }
+                        }) }}
+
+                        {{ form_widget(form.subject) }}
+
+                        <div class="mt-2 text-sm text-red-500">
+                            {{ form_errors(form.subject) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    {{ form_label(form.message, null, {
+                        label_attr: {
+                            class: 'mb-2 block text-sm font-semibold text-slate-700'
+                        }
+                    }) }}
+
+                    {{ form_widget(form.message) }}
+
+                    <div class="mt-2 text-sm text-red-500">
+                        {{ form_errors(form.message) }}
+                    </div>
+                </div>
+
+                {# CAPTCHA #}
+                <div> 
+                    {{ form_widget(form.captcha) }} 
+                    <div class="mt-2 text-sm text-red-500">  
+                       {{ form_errors(form.captcha) }} 
+                    </div> 
+                </div> 
+
+                <button
+                    type="submit"
+                    class="inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-6 py-4 text-sm font-semibold text-white shadow-lg transition duration-300 hover:bg-indigo-700 hover:shadow-indigo-500/25 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+                >
+                    Send Message
+                </button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
