@@ -13,18 +13,20 @@ class RecaptchaService
     }
 
     public function verify( string $token ): bool 
-    {
+    { 
+
+        if (!$token) {
+            return false;
+        }
+
         $response =
             $this->httpClient->request(
                 'POST',
                 'https://www.google.com/recaptcha/api/siteverify',
                 [
                     'body' => [
-                        'secret' =>
-                            $this->recaptchaSecret,
-
-                        'response' =>
-                            $token,
+                        'secret' => $this->recaptchaSecret,
+                        'response' => $token,
                     ],
                 ]
             );
