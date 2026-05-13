@@ -10,7 +10,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
+
 use App\Dto\RegisterUserInput;
 use App\State\RegisterUserProcessor;
 
@@ -24,7 +27,9 @@ use App\State\RegisterUserProcessor;
             processor: RegisterUserProcessor::class,
             uriTemplate: '/register',
             input: RegisterUserInput::class,
-        )
+        ),
+        new GetCollection(), // Enables GET /users
+        new Get()            // Enables GET /users/{id}
     ]
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
