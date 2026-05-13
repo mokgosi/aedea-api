@@ -45,7 +45,7 @@ $ git clone git@github.com:mokgosi/aedea-api.git
 
 ```
 
-## 4. Execute
+## 4. Execute Setup
 
 ```bash
 $ ./scripts/setup.sh
