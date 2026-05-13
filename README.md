@@ -40,7 +40,7 @@ $ cd aedea-app
 ```bash
 $ git clone git@github.com:mokgosi/aedea-api.git
 $ cd aedea-api
-$ cp .env-example .env
+$ cp .env-example .env.local
 
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/db_name"
 GOOGLE_RECAPTCHA_SITE_KEY=SITE_KEY
