@@ -22,47 +22,70 @@ This is the backend API for idea submissions, collaborations, project proposals 
 
 ---
 
-# 📥 Installation
+# 📥 Docker Installation  -  coupled with Frontend
 
-
-If not done using frontend README yet.
-
-
-## 1. Clone main app
+If not done using Frontend README yet
 
 ```bash
 $ git clone git@github.com:mokgosi/aedea-app.git
 $ cd aedea-app
 ```
 
-## 2. Clone Api & Setup 
+Then read throgh README.md for further installation instructions.
+
+
+ -----  OR  ----
+
+
+# 📥  Standalonne Installation
+
+
+## 1. Clone repository
 
 ```bash
-$ git clone git@github.com:mokgosi/aedea-api.git
-$ cd aedea-api
-$ cp .env-example .env.local
+git clone git@github.com:mokgosi/aedea-api.git
+cd aedea-api
+```
+
+## 2. Install dependencies
+
+```bash
+composer install
+```
+
+## 3. Setup environment
+
+```bash
+$ composer install
+$ php bin/console lexik:jwt:generate-keypair
 
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/db_name"
+
+MAILER_DSN=smtp://localhost:1025
+
 GOOGLE_RECAPTCHA_SITE_KEY=SITE_KEY
 GOOGLE_RECAPTCHA_SECRET_KEY=SECRET_KEY
+
 ```
 
-## 4. Clone frontend
+## 4 Create Database
 
 ```bash
-$ git clone git@github.com:mokgosi/aedea-frontend.git
-$ cd aedea-frontend
-$ cp .env-example .env
-
-VITE_RECAPTCHA_SITE_KEY=RECAPTCHA_SITE_KEY
+$ php bin/console doctrine:database:create
+$ php bin/console doctrine:migrations:migrate
+$ php bin/console doctrine:fixtures:load
 ```
 
-## 5. Execute Setup
+## 5 Run services
+
 
 ```bash
-$ ./scripts/setup.sh
-
+$ mailpit
+$ symfony serve
 ```
+
+Your api docs  runs here: http://localhost:8000/api
+
 
 
 
